@@ -1,0 +1,186 @@
+<aside class="aside">
+  <div class="filters" *ngIf="showfilter" @fade>
+    <div class="header">
+      <div class="icon-and-filter">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-funnel-fill"
+          viewBox="0 0 16 16"
+          style="scale: 1.25; margin-right: 10px; margin-top: 6px"
+        >
+          <path
+            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"
+          />
+        </svg>
+        <h5 style="margin: 0">Filters</h5>
+      </div>
+      <div class="close-filter" (click)="toggleFilter()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-x-lg"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div class="filter-buttons">
+      <button class="reset-filter filter-btn" (click)="resetFilters()">
+        Reset Filters
+      </button>
+      <button class="apply-filter filter-btn" (click)="onChange()">
+        Apply Filters
+      </button>
+    </div>
+    <div class="filters-list form-group">
+      <!--[formGroup]="searchFilters"-->
+      <div class="print-type filter-sections form-group">
+        <!-- formGroupName="printType" -->
+
+        <label
+          class="print-type-label filter-label"
+          (click)="printType = !printType"
+        >
+          <h6>Print Type</h6>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-caret-down-fill down"
+            viewBox="0 0 16 16"
+            [@upDown]="printType ? 'down' : 'up'"
+          >
+            <path
+              d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+            /></svg
+        ></label>
+        <ul class="list-group" *ngIf="printType" @fade>
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="allF"
+              (change)="onChange()"
+            /><!--formControlName="all"-->All
+          </li>
+
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="booksF"
+            /><!--formControlName="books"-->Books
+          </li>
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="magazinesF"
+            /><!--formControlName="magazines"-->Magazines
+          </li>
+        </ul>
+      </div>
+      <div class="filter-type filter-sections form-group">
+        <label
+          class="filter-type-label filter-label"
+          (click)="filterType = !filterType"
+          ><h6>Filter Type</h6>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-caret-down-fill down"
+            viewBox="0 0 16 16"
+            [@upDown]="filterType ? 'down' : 'up'"
+          >
+            <path
+              d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+            /></svg
+        ></label>
+        <ul class="list-group" *ngIf="filterType" @fade>
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="ebooksF"
+            />ebooks
+          </li>
+
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="freeF"
+            />free ebooks
+          </li>
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="paidF"
+            />paid ebooks
+          </li>
+          <li class="list-group-item">
+            <input
+              type="checkbox"
+              style="margin-right: 16px"
+              [(ngModel)]="partialF"
+            />partial
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <span class="filters-span" (click)="toggleFilter()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      style="scale: 2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+      />
+    </svg>
+  </span>
+</aside>
+<!-- <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="currentColor"
+  class="bi bi-funnel-fill"
+  viewBox="0 0 16 16"
+  style="scale: 1.5"
+>
+  <path
+    d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"
+  />
+</svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="currentColor"
+  class="bi bi-chevron-right"
+  viewBox="0 0 16 16"
+>
+  <path
+    fill-rule="evenodd"
+    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+  />
+</svg> -->

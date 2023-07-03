@@ -1,0 +1,41 @@
+<div class="cards-container">
+  <div class="wrapper">
+    <div class="card" style="width: 100%" *ngFor="let item of arr">
+      <img
+        [src]="item.volumeInfo.imageLinks.thumbnail"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.volumeInfo.title }}</h5>
+        <p class="card-text">{{ item.volumeInfo.description }}</p>
+        <a [href]="item.volumeInfo.infoLink" class="btn btn-primary"
+          >Know more</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="card" style="width: 100%">
+    <img src="..." class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card" style="width: 100%">
+    <img src="..." class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div> -->
+</div>

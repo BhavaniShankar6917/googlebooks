@@ -1,0 +1,12 @@
+<div id="search-container">
+  <div id="cont" [formGroup]="searchForm">
+    <input
+      type="search"
+      class="form-control"
+      placeholder="type here..."
+      formControlName="search"
+    />
+    <button class="btn" (click)="getBooks()">Search</button>
+  </div>
+  <p class="displayMessage">{{ displayMessage }}</p>
+</div>
